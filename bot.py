@@ -107,14 +107,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send welcome message when command /start is issued."""
     user = update.message.from_user
     await update.message.reply_text(
-        f"🤖 **Welcome {user.first_name} to Russia Scholarship Service!**\n\n"
+        f"🤖 *Welcome {user.first_name} to Russia Scholarship Service!*\n\n"
         "I will help you apply for the Russian Government Scholarship.\n\n"
-        "📋 **Available Commands:**\n"
+        "📋 *Available Commands:*\n"
         "/apply - Start new application\n"
         "/status - Check your application status\n"
         "/help - Get help and instructions\n"
         "/cancel - Cancel current operation\n\n"
-        "Click /apply to begin your scholarship journey! 🎓"
+        "Click /apply to begin your scholarship journey! 🎓",
+        parse_mode='Markdown'
     )
 
 async def apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -122,11 +123,12 @@ async def apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
     
     await update.message.reply_text(
-        "🤖 **Welcome to Russia Scholarship Service!**\n\n"
+        "🤖 *Welcome to Russia Scholarship Service!*\n\n"
         "I will help you apply for the Russian Government Scholarship.\n\n"
         "Let's start with your personal information. This will take about 10-15 minutes.\n\n"
-        "📝 **Please type your FULL NAME as it appears in your passport:**\n\n"
-        "Type /cancel at any time to stop the application."
+        "📝 *Please type your FULL NAME as it appears in your passport:*\n\n"
+        "Type /cancel at any time to stop the application.",
+        parse_mode='Markdown'
     )
     return GET_NAME
 
