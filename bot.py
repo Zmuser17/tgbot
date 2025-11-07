@@ -533,10 +533,14 @@ async def handle_unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     """Start the bot."""
-    # ⚠️ REPLACE WITH YOUR ACTUAL BOT TOKEN!
-    TOKEN = "8295648137:AAGl0VLcqCB8Rx6uOqaytL1SyEh3Ed5FFPI"
+    # Read bot token from environment variable for security
+    TOKEN = "8295648137:AAGl0VLcqCB8Rx6uOqaytL1SyEh3Ed5FFPI"  # Your actual token
+    if not TOKEN:
+        logger.error("Bot token is not set. Exiting.")
+        raise SystemExit("Error: BOT_TOKEN environment variable not set. Set it and restart the bot.")
     
     # Create the Application
+    
     application = Application.builder().token(TOKEN).build()
     
     # Add conversation handler for /apply command
